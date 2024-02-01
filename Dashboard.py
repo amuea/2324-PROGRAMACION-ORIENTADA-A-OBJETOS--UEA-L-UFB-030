@@ -7,29 +7,26 @@ def mostrar_codigo(ruta_script):
     try:
         with open(ruta_script_absoluta, 'r') as archivo:
             print(f"\n--- Código de {ruta_script} ---\n")
-            print(archivo.read())
+            print(archivo.read(ruta_script))
     except FileNotFoundError:
         print("El archivo no se encontró.")
     except Exception as e:
         print(f"Ocurrió un error al leer el archivo: {e}")
 
-
-def mostrar_menu():
+def mostrar_menu(ruta_base):
     # Define la ruta base donde se encuentra el dashboard.py
     ruta_base = os.path.dirname(__file__)
-
     opciones = {
-        '1': 'Unidad 1/1.2. Tecnicas de Programacion/1.2-1. Ejemplo Tecnicas de Programacion.py',
+        '1': 'Unidad 2/1.1. Tipos de Datos e Identificadores/2.1.1-1 - Nomenclatura en Python.py',
         # Agrega aquí el resto de las rutas de los scripts
-    }
-
+    } 
     while True:
         print("\nMenu Principal - Dashboard")
         # Imprime las opciones del menú
         for key in opciones:
             print(f"{key} - {opciones[key]}")
         print("0 - Salir")
-
+        
         eleccion = input("Elige un script para ver su código o '0' para salir: ")
         if eleccion == '0':
             break
@@ -40,7 +37,6 @@ def mostrar_menu():
         else:
             print("Opción no válida. Por favor, intenta de nuevo.")
 
-
 # Ejecutar el dashboard
 if __name__ == "__main__":
-    mostrar_menu()
+    mostrar_menu(ruta_base)
